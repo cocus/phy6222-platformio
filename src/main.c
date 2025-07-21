@@ -89,11 +89,11 @@ void genericTask(void *argument)
 #if 0
     {
         /* Set a date/time */
-        const uint8_t seconds = 45;
-        const uint8_t minutes = 14;
-        const uint8_t hours = 0;
+        const uint8_t seconds = 30;
+        const uint8_t minutes = 27;
+        const uint8_t hours = 22;
         const uint8_t day_of_week = 7;
-        const uint8_t date = 12;
+        const uint8_t date = 20;
         const uint8_t month = 7;
         const uint8_t year = 25;
         uint8_t wr_data[7] = {
@@ -108,7 +108,7 @@ void genericTask(void *argument)
         hal_i2c_master_write_reg(I2C_0, ds3231_addr, 0x00, wr_data, sizeof(wr_data), 0xffffffff);
     }
 #endif
-    gpio_pin_e pin = GPIO_LED;
+    gpio_pin_e pin = GPIO_P01;
     hal_gpio_pin_init(pin, GPIO_INPUT);
     hal_gpio_pull_set(pin, WEAK_PULL_UP);
 
@@ -329,6 +329,9 @@ int main(void)
 {
     /* init stuff as if OSAL was in charge */
     osal_nuker_init(SYS_CLK_DLL_96M, CLK_32K_RCOSC); // SYS_CLK_XTAL_16M);
+
+    //hal_gpio_pin2pin3_control(GPIO_P02, 0);
+    //hal_gpio_pin2pin3_control(GPIO_P03, 0);
 
     // hal_lowpower_init();
 
